@@ -29,6 +29,7 @@ var Lightbox = React.createClass({
     backgroundColor: PropTypes.string,
     onOpen:          PropTypes.func,
     onClose:         PropTypes.func,
+    onWillClose:     PropTypes.func,
     springConfig:    PropTypes.shape({
       tension:       PropTypes.number,
       friction:      PropTypes.number,
@@ -41,6 +42,7 @@ var Lightbox = React.createClass({
       swipeToDismiss: true,
       onOpen: () => {},
       onClose: () => {},
+      onWillClose: () => {},
     };
   },
 
@@ -79,6 +81,7 @@ var Lightbox = React.createClass({
       backgroundColor: this.props.backgroundColor,
       children: this.getContent(),
       onClose: this.onClose,
+      onWillClose: this.props.onWillClose,
     };
   },
 
