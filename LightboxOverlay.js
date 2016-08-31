@@ -39,6 +39,7 @@ var LightboxOverlay = React.createClass({
     }),
     backgroundColor: PropTypes.string,
     isOpen:          PropTypes.bool,
+    headerStyle:     PropTypes.object,
     renderHeader:    PropTypes.func,
     onOpen:          PropTypes.func,
     onClose:         PropTypes.func,
@@ -155,6 +156,7 @@ var LightboxOverlay = React.createClass({
   render: function() {
     var {
       isOpen,
+      headerStyle,
       renderHeader,
       swipeToDismiss,
       origin,
@@ -194,7 +196,7 @@ var LightboxOverlay = React.createClass({
     }];
 
     var background = (<Animated.View style={[styles.background, { backgroundColor: backgroundColor }, lightboxOpacityStyle]}></Animated.View>);
-    var header = (<Animated.View style={[styles.header, lightboxOpacityStyle]}>{(renderHeader ?
+    var header = (<Animated.View style={[styles.header, headerStyle, lightboxOpacityStyle]}>{(renderHeader ?
       renderHeader(this.close) :
       (
         <TouchableOpacity onPress={this.close}>
